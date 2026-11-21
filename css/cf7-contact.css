@@ -1,0 +1,127 @@
+/* Contact Form 7 — 浮動標籤：固定於輸入框上邊框（與原站一致） */
+
+.contact-form-wrapper .wpcf7 {
+    margin: 0;
+}
+
+.contact-form-wrapper .wpcf7-form.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.contact-form-wrapper .form-group {
+    position: relative;
+}
+
+.contact-form-wrapper .form-group > p {
+    margin: 0;
+}
+
+.contact-form-wrapper .wpcf7-form-control-wrap {
+    display: block;
+    width: 100%;
+}
+
+/* 標籤永遠停在上邊框線上，不置中於欄位內、也不移到欄位外上方 */
+.contact-form-wrapper .form-group label {
+    position: absolute;
+    top: 0;
+    left: var(--spacing-md);
+    transform: translateY(-50%);
+    background: var(--bg-elevated);
+    padding: 0 var(--spacing-sm);
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    line-height: 1.2;
+    transition: color var(--transition-fast);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.contact-form-wrapper .form-group:focus-within label,
+.contact-form-wrapper .form-group:has(.wpcf7-form-control:not(:placeholder-shown)) label {
+    color: var(--secondary-color);
+}
+
+.contact-form-wrapper .form-group .wpcf7-form-control {
+    width: 100%;
+    padding: var(--spacing-lg) var(--spacing-md);
+    border: 2px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-base);
+    transition: all var(--transition-fast);
+    background: var(--bg-elevated);
+    font-family: inherit;
+}
+
+.contact-form-wrapper .form-group textarea.wpcf7-form-control {
+    min-height: 140px;
+    resize: vertical;
+    padding-top: calc(var(--spacing-lg) + 0.25rem);
+}
+
+.contact-form-wrapper .form-group .wpcf7-form-control:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.1);
+}
+
+.contact-form-wrapper .topp-antispam-fields {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.contact-form-wrapper .wpcf7-submit.submit-btn {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    color: white;
+    padding: var(--spacing-lg) var(--spacing-2xl);
+    border: none;
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    width: 100%;
+}
+
+.contact-form-wrapper .wpcf7-submit.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.contact-form-wrapper .wpcf7-spinner {
+    margin: 0 auto;
+}
+
+#contact .wpcf7-response-output {
+    display: none !important;
+}
+
+.contact-form-wrapper .wpcf7-not-valid-tip {
+    font-size: var(--font-size-sm);
+    color: #c0392b;
+    margin-top: 0.25rem;
+}
+
+/* 覆寫 style.css：勿將 CF7 標籤置中於欄位內 (top: 50%) */
+#contact .contact-form-wrapper .form-group label {
+    top: 0;
+    transform: translateY(-50%);
+}
+
+#contact .contact-form-wrapper .form-group textarea + label,
+#contact .contact-form-wrapper .form-group:has(textarea) label {
+    top: 0;
+    transform: translateY(-50%);
+}

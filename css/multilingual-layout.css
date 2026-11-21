@@ -1,0 +1,90 @@
+/* Multilingual layout — fluid typography, no fixed heights */
+
+[lang="en"] .text-content,
+[lang="en"] .card-content,
+[lang="en"] .description,
+[lang="vi"] .text-content,
+[lang="vi"] .card-content,
+[lang="vi"] .description,
+[lang="ja"] .text-content,
+[lang="ja"] .card-content,
+[lang="ja"] .description,
+[lang="ko"] .text-content,
+[lang="ko"] .card-content,
+[lang="ko"] .description {
+    font-size: clamp(0.875rem, 0.82rem + 0.2vw, 0.95rem);
+    line-height: 1.6;
+}
+
+[lang="zh-CN"] .text-content,
+[lang="zh-CN"] .card-content,
+[lang="zh-CN"] .description,
+[lang="zh-TW"] .text-content,
+[lang="zh-TW"] .card-content,
+[lang="zh-TW"] .description {
+    font-size: clamp(0.9rem, 0.85rem + 0.25vw, 1rem);
+    line-height: 1.75;
+}
+
+/* Card grids stretch naturally */
+.advantage-grid,
+.capabilities-grid,
+.certifications-grid,
+.environmental-grid,
+.products-grid,
+.who-we-serve-grid {
+    align-items: stretch;
+}
+
+.advantage-card,
+.cert-card,
+.env-card,
+.about-card,
+.capability-card,
+.product-card,
+.who-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.advantage-card p,
+.cert-card p,
+.env-card p,
+.capability-card .card-description,
+.product-card .product-description,
+.who-card p {
+    flex: 1;
+}
+
+/* Smooth language switch without layout jumps */
+[data-text] {
+    transition: opacity 0.15s ease;
+}
+
+.hero-content h1,
+.hero-content p,
+.section-title,
+.section-subtitle {
+    transition: opacity 0.2s ease;
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: clamp(1.75rem, 5vw + 0.5rem, 2.5rem);
+    }
+}
+
+@media (max-width: 480px) {
+    [lang="en"] p,
+    [lang="vi"] p,
+    [lang="ja"] p,
+    [lang="ko"] p {
+        font-size: clamp(0.85rem, 0.8rem + 0.15vw, 0.9rem);
+    }
+
+    [lang="zh-CN"] p,
+    [lang="zh-TW"] p {
+        font-size: clamp(0.875rem, 0.82rem + 0.2vw, 0.95rem);
+    }
+}
